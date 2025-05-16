@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP College Fee Structure 2025-26</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4895ef;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --success-color: #4cc9f0;
+            --warning-color: #f72585;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            
+            /* Light mode variables */
+            --bg-color: #f0f2f5;
+            --card-bg: #ffffff;
+            --text-color: #212529;
+            --border-color: #e9ecef;
+            --header-gradient-start: #4361ee;
+            --header-gradient-end: #3f37c9;
+            --header-text: #ffffff;
+            --table-hover: #f8f9fa;
+            --table-header-bg: #f8f9fa;
+            --table-header-text: #212529;
+            --table-border: #e9ecef;
+            --filter-label: #555;
+            --select-border: #ddd;
+            --footer-text: #6c757d;
+            --toggle-bg: #e9ecef;
+            
+            /* Added colorful variables for radio options */
+            --aided-color: #0070f3;
+            --aided-bg: #e6f7ff;
+            --unaided-color: #fa8c16;
+            --unaided-bg: #fff7e6;
+            --regular-color: #722ed1;
+            --regular-bg: #f9f0ff;
+            --snq-color: #52c41a;
+            --snq-bg: #f6ffed;
+            --lateral-color: #f5222d;
+            --lateral-bg: #fff2f0;
+            
+            /* Button colors */
+            --btn-reset-bg: #f1f3f5;
+            --btn-reset-color: #495057;
+            --btn-reset-hover-bg: #e9ecef;
+            --btn-active-bg: #3f37c9;
+            --btn-active-color: white;
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --border-color: #333333;
+            --header-gradient-start: #2c3e50;
+            --header-gradient-end: #1a2639;
+            --header-text: #ffffff;
+            --table-hover: #2a2a2a;
+            --table-header-bg: #272727;
+            --table-header-text: #e0e0e0;
+            --table-border: #333333;
+            --filter-label: #aaaaaa;
+            --select-border: #333333;
+            --footer-text: #aaaaaa;
+            --toggle-bg: #333333;
+            
+            /* Dark mode adjustments for radio options */
+            --aided-bg: rgba(0, 112, 243, 0.2);
+            --aided-color: #4da3ff;
+            --unaided-bg: rgba(250, 140, 22, 0.2);
+            --unaided-color: #ffaa5c;
+            --regular-bg: rgba(114, 46, 209, 0.2);
+            --regular-color: #9c5eff;
+            --snq-bg: rgba(82, 196, 26, 0.2);
+            --snq-color: #7dde4e;
+            --lateral-bg: rgba(245, 34, 45, 0.2);
+            --lateral-color: #ff6b70;
+            
+            /* Button colors in dark mode */
+            --btn-reset-bg: #333333;
+            --btn-reset-color: #e0e0e0;
+            --btn-reset-hover-bg: #444444;
+            --btn-active-bg: #4da3ff;
+            --btn-active-color: #121212;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 16px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-start), var(--header-gradient-end));
+            color: var(--header-text);
+            padding: 24px 0;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .header p {
+            text-align: center;
+            opacity: 0.9;
+            margin-top: 8px;
+        }
+        
+        .filters-container {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--box-shadow);
+            transition: all 0.3s ease;
+        }
+        
+        /* Theme toggle */
+        .theme-switch-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-bottom: 16px;
+        }
+        
+        .theme-switch {
+            display: inline-block;
+            position: relative;
+            width: 60px;
+            height: 28px;
+        }
+        
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--toggle-bg);
+            transition: .4s;
+            border-radius: 34px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked + .slider {
+            background-color: var(--primary-color);
+        }
+        
+        input:checked + .slider:before {
+            transform: translateX(32px);
+        }
+        
+        /* Filters styles */
+        .filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .filter-group:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .filter-group-course {
+            border-top: 4px solid var(--aided-color);
+        }
+        
+        .filter-group-year {
+            border-top: 4px solid var(--accent-color);
+        }
+        
+        .filter-group-type {
+            border-top: 4px solid var(--regular-color);
+        }
+        
+        .filter-group label {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text-color);
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .checkbox-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        
+        .checkbox-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checkbox-item input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .checkbox-item label {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 500;
+            width: 100%;
+            transition: all 0.2s ease;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .checkbox-item label:before {
+            content: '';
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            margin-right: 10px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+        
+        .checkbox-item input[type="radio"]:checked + label:before {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: inset 0 0 0 4px var(--card-bg);
+        }
+        
+        /* Action buttons */
+        .button-row {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .btn-reset {
+            background-color: var(--btn-reset-bg);
+            color: var(--btn-reset-color);
+        }
+        
+        .btn-reset:hover {
+            background-color: var(--btn-reset-hover-bg);
+        }
+        
+        .btn-display {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-display:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-pdf {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-pdf:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Table styles */
+        .table-container {
+            overflow-x: auto;
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 24px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 15px;
+        }
+        
+        th {
+            background-color: var(--table-header-bg);
+            font-weight: 600;
+            text-align: left;
+            padding: 16px;
+            border-bottom: 2px solid var(--table-border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            color: var(--table-header-text);
+        }
+        
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--table-border);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--table-hover);
+        }
+        
+        tr:hover {
+            background-color: rgba(72, 149, 239, 0.1);
+            transition: background-color 0.2s ease;
+        }
+        
+        .fee-cell {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            font-size: 16px;
+            text-align: right;
+        }
+        
+        .total-cell {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 16px;
+        }
+        
+        .subtotal-cell {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 15px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .grand-total-row {
+            background-color: rgba(67, 97, 238, 0.1);
+        }
+        
+        .grand-total-cell {
+            font-weight: 800;
+            color: var(--primary-color);
+            font-size: 18px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 24px 0;
+            font-size: 14px;
+            color: var(--footer-text);
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .badge-aided {
+            background-color: var(--aided-bg);
+            color: var(--aided-color);
+        }
+        
+        .badge-unaided {
+            background-color: var(--unaided-bg);
+            color: var(--unaided-color);
+        }
+        
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 12px;
+            }
+            
+            .filters {
+                grid-template-columns: 1fr;
+            }
+            
+            button {
+                padding: 10px 16px;
+                font-size: 14px;
+                max-width: none;
+            }
+            
+            th, td {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>SANJAY MEMORIAL POLYTECHNIC</h1>
+            <p>Ikkeri Road, SAGAR - 577401</p>
+            <p>Fee Structure 2025-26</p>
+        </div>
+        
+        <!-- Theme Switch -->
+        <div class="theme-switch-wrapper">
+            <span class="toggle-label">Dark Mode</span>
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        
+        <!-- Filters Container -->
+        <div class="filters-container">
+            <div class="filters">
+                <!-- Course Type Filter -->
+                <div class="filter-group filter-group-course">
+                    <label>Course Type</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseAll" name="courseType" value="all" checked>
+                            <label for="courseAll">All Courses</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseAided" name="courseType" value="aided">
+                            <label for="courseAided">Aided</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="courseUnaided" name="courseType" value="unaided">
+                            <label for="courseUnaided">Unaided</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Year Filter -->
+                <div class="filter-group filter-group-year">
+                    <label>Year</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="yearAll" name="year" value="all" checked>
+                            <label for="yearAll">All Years</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year1st" name="year" value="1st">
+                            <label for="year1st">1st Year</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year2nd" name="year" value="2nd">
+                            <label for="year2nd">2nd Year</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="year3rd" name="year" value="3rd">
+                            <label for="year3rd">3rd Year</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Admission Type Filter -->
+                <div class="filter-group filter-group-type">
+                    <label>Admission Type</label>
+                    <div class="checkbox-container">
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeAll" name="admissionType" value="all" checked>
+                            <label for="typeAll">All Types</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeRegular" name="admissionType" value="regular">
+                            <label for="typeRegular">Regular</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeSnq" name="admissionType" value="snq">
+                            <label for="typeSnq">SNQ</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="radio" id="typeLateral" name="admissionType" value="lateral">
+                            <label for="typeLateral">Lateral Entry</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="button-row">
+                <button class="btn-pdf" id="downloadPdf">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    Download PDF
+                </button>
+            </div>
+        </div>
+        
+        <!-- Multiple Receipts Container -->
+        <div id="receipts-container">
+            <!-- Initial receipt will be displayed here -->
+            <div class="table-container">
+                <div class="receipt-header-info" id="receipt-header-info">
+                    <!-- Dynamic header for course/year/type information -->
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No</th>
+                            <th>Particulars</th>
+                            <th>Amount (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fee-table-body">
+                        <tr>
+                            <td>1</td>
+                            <td>Admission Fee</td>
+                            <td class="fee-cell" id="admissionFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Tuition Fee</td>
+                            <td class="fee-cell" id="tuitionFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Reading Room Fee</td>
+                            <td class="fee-cell" id="readingRoomFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Association Fee</td>
+                            <td class="fee-cell" id="associationFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Sports Fee</td>
+                            <td class="fee-cell" id="sportsFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Magazine Fee</td>
+                            <td class="fee-cell" id="magazineFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Application Fee</td>
+                            <td class="fee-cell" id="applicationFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Identity Card Fee</td>
+                            <td class="fee-cell" id="idCardFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Workshop / Laboratory Fee</td>
+                            <td class="fee-cell" id="labFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Betterment Fee</td>
+                            <td class="fee-cell" id="bettermentFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Library Fee</td>
+                            <td class="fee-cell" id="libraryFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Caution Deposit</td>
+                            <td class="fee-cell" id="cautionDeposit">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Other Deposit [Development]</td>
+                            <td class="fee-cell" id="developmentFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Examination Fee</td>
+                            <td class="fee-cell" id="examFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Miscellaneous Fee</td>
+                            <td class="fee-cell" id="miscFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Fee Balance</td>
+                            <td class="fee-cell" id="feeBalance">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>S.W.F.</td>
+                            <td class="fee-cell" id="swfFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>T.W.F.</td>
+                            <td class="fee-cell" id="twfFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>N.S.S.</td>
+                            <td class="fee-cell" id="nssFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="subtotal-cell">SMP TOTAL</td>
+                            <td class="fee-cell subtotal-cell" id="subTotalFee">0.00</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>Management Fee</td>
+                            <td class="fee-cell" id="managementFee">0.00</td>
+                        </tr>
+                        <tr class="grand-total-row">
+                            <td colspan="2" class="grand-total-cell">GRAND TOTAL</td>
+                            <td class="fee-cell grand-total-cell" id="grandTotal">0.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Sanjay Memorial Polytechnic. All rights reserved.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Fee structure data - updated to match exact fee structure from document
+        const feeStructure = {
+            aided: {
+                '1st': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    }
+                },
+                '2nd': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 2nd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000 // Higher for 2nd year
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 2nd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000 // Higher for 2nd year
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 10000 // Highest for lateral entry
+                    }
+                },
+                '3rd': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 5618,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    }
+                }
+            },
+            unaided: {
+                '1st': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 5000
+                    }
+                },
+                '2nd': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 2nd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000 // Higher for 2nd year
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 2nd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000 // Higher for 2nd year
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 150,
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 10000 // Highest for lateral entry
+                    }
+                },
+                '3rd': {
+                    regular: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    },
+                    snq: {
+                        admissionFee: 30,
+                        tuitionFee: 0, // SNQ students pay 0 tuition fee
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    },
+                    lateral: {
+                        admissionFee: 30,
+                        tuitionFee: 12075,
+                        readingRoomFee: 100,
+                        associationFee: 60,
+                        sportsFee: 70,
+                        magazineFee: 60,
+                        applicationFee: 0,
+                        idCardFee: 10,
+                        labFee: 300,
+                        bettermentFee: 0,
+                        libraryFee: 0, // Lower other fees for 3rd year
+                        cautionDeposit: 0,
+                        developmentFee: 500,
+                        examFee: 0,
+                        miscFee: 0,
+                        feeBalance: 0,
+                        swfFee: 25,
+                        twfFee: 25,
+                        nssFee: 40,
+                        managementFee: 6000
+                    }
+                }
+            }
+        };
+        
+        // Format currency function
+        function formatCurrency(amount) {
+            return amount.toLocaleString('en-IN', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            });
+        }
+        
+        // Create receipt template function
+        function createReceiptTemplate(id) {
+            const template = document.createElement('div');
+            template.className = 'table-container multi-receipt';
+            template.id = id;
+            
+            // Create header info section
+            const headerInfo = document.createElement('div');
+            headerInfo.className = 'receipt-header-info';
+            headerInfo.id = `${id}-header`;
+            template.appendChild(headerInfo);
+            
+            // Create table
+            const table = document.createElement('table');
+            
+            // Create table header
+            const thead = document.createElement('thead');
+            thead.innerHTML = `
+                <tr>
+                    <th>Sl No</th>
+                    <th>Particulars</th>
+                    <th>Amount (₹)</th>
+                </tr>
+            `;
+            table.appendChild(thead);
+            
+            // Create table body
+            const tbody = document.createElement('tbody');
+            tbody.id = `${id}-body`;
+            
+            // All fee rows
+            const feeRows = [
+                { id: 'admissionFee', label: 'Admission Fee', slNo: 1 },
+                { id: 'tuitionFee', label: 'Tuition Fee', slNo: 2 },
+                { id: 'readingRoomFee', label: 'Reading Room Fee', slNo: 3 },
+                { id: 'associationFee', label: 'Association Fee', slNo: 4 },
+                { id: 'sportsFee', label: 'Sports Fee', slNo: 5 },
+                { id: 'magazineFee', label: 'Magazine Fee', slNo: 6 },
+                { id: 'applicationFee', label: 'Application Fee', slNo: 7 },
+                { id: 'idCardFee', label: 'Identity Card Fee', slNo: 8 },
+                { id: 'labFee', label: 'Workshop / Laboratory Fee', slNo: 9 },
+                { id: 'bettermentFee', label: 'Betterment Fee', slNo: 10 },
+                { id: 'libraryFee', label: 'Library Fee', slNo: 11 },
+                { id: 'cautionDeposit', label: 'Caution Deposit', slNo: 12 },
+                { id: 'developmentFee', label: 'Other Deposit [Development]', slNo: 13 },
+                { id: 'examFee', label: 'Examination Fee', slNo: 14 },
+                { id: 'miscFee', label: 'Miscellaneous Fee', slNo: 15 },
+                { id: 'feeBalance', label: 'Fee Balance', slNo: 16 },
+                { id: 'swfFee', label: 'S.W.F.', slNo: 17 },
+                { id: 'twfFee', label: 'T.W.F.', slNo: 18 },
+                { id: 'nssFee', label: 'N.S.S.', slNo: 19 }
+            ];
+            
+            // Create rows for each fee
+            feeRows.forEach(fee => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${fee.slNo}</td>
+                        <td>${fee.label}</td>
+                        <td class="fee-cell" id="${id}-${fee.id}">0.00</td>
+                    </tr>
+                `;
+            });
+            
+            // Subtotal row after NSS (SMP Total)
+            tbody.innerHTML += `
+                <tr>
+                    <td colspan="2" class="subtotal-cell">SMP TOTAL</td>
+                    <td class="fee-cell subtotal-cell" id="${id}-subTotalFee">0.00</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Management Fee</td>
+                    <td class="fee-cell" id="${id}-managementFee">0.00</td>
+                </tr>
+                <tr class="grand-total-row">
+                    <td colspan="2" class="grand-total-cell">GRAND TOTAL</td>
+                    <td class="fee-cell grand-total-cell" id="${id}-grandTotal">0.00</td>
+                </tr>
+            `;
+            
+            table.appendChild(tbody);
+            template.appendChild(table);
+            
+            return template;
+        }
+        
+        // Update fee display function
+        function updateFeeDisplay(feeData, receiptId = 'receipt') {
+            // Update each fee cell
+            for (const [feeId, feeAmount] of Object.entries(feeData)) {
+                const feeElement = document.getElementById(`${receiptId}-${feeId}`);
+                if (feeElement) {
+                    feeElement.textContent = formatCurrency(feeAmount);
+                }
+            }
+            
+            // Calculate subtotal (all fees except management fee)
+            let subTotal = 0;
+            for (const [feeId, feeAmount] of Object.entries(feeData)) {
+                if (feeId !== 'managementFee') {
+                    subTotal += feeAmount;
+                }
+            }
+            
+            // Get the management fee
+            const managementFee = feeData.managementFee || 0;
+            
+            // Calculate grand total
+            const grandTotal = subTotal + managementFee;
+            
+            // Update totals
+            document.getElementById(`${receiptId}-subTotalFee`).textContent = formatCurrency(subTotal);
+            document.getElementById(`${receiptId}-grandTotal`).textContent = formatCurrency(grandTotal);
+            
+            // Highlight the rows with animation
+            const rows = document.querySelectorAll(`#${receiptId}-body tr`);
+            rows.forEach(row => {
+                row.style.transition = 'background-color 0.5s ease';
+                row.style.backgroundColor = 'rgba(67, 97, 238, 0.1)';
+                setTimeout(() => {
+                    row.style.backgroundColor = '';
+                }, 800);
+            });
+            
+            return {subTotal, grandTotal};
+        }
+        
+        // Get human-readable names for filter values
+        function getFilterLabels(courseType, year, admissionType) {
+            const courseLabel = courseType === 'aided' ? 'Aided' : 'Unaided';
+            const yearLabel = year === '1st' ? '1st Year' : (year === '2nd' ? '2nd Year' : '3rd Year');
+            const typeLabel = admissionType === 'regular' ? 'Regular' : 
+                            (admissionType === 'snq' ? 'SNQ' : 'Lateral Entry');
+            
+            return { courseLabel, yearLabel, typeLabel };
+        }
+        
+        // Update receipt header with filter info and totals summary
+        function updateReceiptHeader(courseType, year, admissionType, receiptId = 'receipt') {
+            const headerElement = document.getElementById(`${receiptId}-header`);
+            const { courseLabel, yearLabel, typeLabel } = getFilterLabels(courseType, year, admissionType);
+            
+            // Get the fee data for this combination
+            const feeData = feeStructure[courseType][year][admissionType];
+            
+            // Calculate sub-totals
+            const tuitionFee = feeData.tuitionFee;
+            const managementFee = feeData.managementFee;
+            
+            // Calculate other fees total (excluding tuition and management)
+            let otherFees = 0;
+            for (const [feeId, feeAmount] of Object.entries(feeData)) {
+                if (feeId !== 'tuitionFee' && feeId !== 'managementFee') {
+                    otherFees += feeAmount;
+                }
+            }
+            
+            // Calculate total
+            const total = tuitionFee + managementFee + otherFees;
+            
+            headerElement.innerHTML = `
+                <div class="receipt-header-badges">
+                    <span class="info-badge course-badge ${courseType}">${courseLabel}</span>
+                    <span class="info-badge year-badge">${yearLabel}</span>
+                    <span class="info-badge type-badge ${admissionType}">${typeLabel}</span>
+                </div>
+                <div class="receipt-header-summary">
+                    <span>Tuition: ₹${formatCurrency(tuitionFee)}</span>
+                    <span>Management: ₹${formatCurrency(managementFee)}</span>
+                    <span>Other Fees: ₹${formatCurrency(otherFees)}</span>
+                    <span>Total: ₹${formatCurrency(total)}</span>
+                </div>
+            `;
+        }
+        
+        // Display all applicable fee structures based on filters
+        function displayAllFees() {
+            const receiptContainer = document.getElementById('receipts-container');
+            receiptContainer.innerHTML = ''; // Clear previous receipts
+            
+            const courseType = document.querySelector('input[name="courseType"]:checked').value;
+            const year = document.querySelector('input[name="year"]:checked').value;
+            const admissionType = document.querySelector('input[name="admissionType"]:checked').value;
+            
+            // Build list of combinations to display
+            const coursesToShow = courseType === 'all' ? ['aided', 'unaided'] : [courseType];
+            const yearsToShow = year === 'all' ? ['1st', '2nd', '3rd'] : [year];
+            const typesToShow = admissionType === 'all' ? ['regular', 'snq', 'lateral'] : [admissionType];
+            
+            let receiptCount = 0;
+            
+            // Generate receipts for each combination
+            coursesToShow.forEach(course => {
+                yearsToShow.forEach(yr => {
+                    typesToShow.forEach(type => {
+                        receiptCount++;
+                        const receiptId = `receipt-${receiptCount}`;
+                        
+                        // Create receipt
+                        const receipt = createReceiptTemplate(receiptId);
+                        receiptContainer.appendChild(receipt);
+                        
+                        // Update header info
+                        updateReceiptHeader(course, yr, type, receiptId);
+                        
+                        // Update fee amounts
+                        updateFeeDisplay(feeStructure[course][yr][type], receiptId);
+                    });
+                });
+            });
+            
+            // If no receipts were created (shouldn't happen with our filter design)
+            if (receiptCount === 0) {
+                receiptContainer.innerHTML = '<div class="no-results">No fee structures match the selected filters.</div>';
+            }
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme toggle functionality
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            });
+            
+            // Filter change event listeners
+            const filterInputs = document.querySelectorAll('input[type="radio"]');
+            filterInputs.forEach(input => {
+                input.addEventListener('change', displayAllFees);
+            });
+            
+            // PDF Download functionality
+            document.getElementById('downloadPdf').addEventListener('click', function() {
+                try {
+                    // Initialize jsPDF
+                    const { jsPDF } = window.jspdf;
+                    if (!jsPDF) {
+                        console.error("jsPDF not found");
+                        alert("PDF generation failed. Please try again later.");
+                        return;
+                    }
+                    
+                    const doc = new jsPDF();
+                    
+                    // Add title
+                    doc.setFontSize(16);
+                    doc.text('SANJAY MEMORIAL POLYTECHNIC', 105, 15, { align: 'center' });
+                    doc.setFontSize(12);
+                    doc.text('Ikkeri Road, SAGAR - 577401', 105, 22, { align: 'center' });
+                    doc.text('Fee Structure 2025-26', 105, 29, { align: 'center' });
+                    
+                    // Get selected filters for the PDF header
+                    const courseType = document.querySelector('input[name="courseType"]:checked').value;
+                    const year = document.querySelector('input[name="year"]:checked').value;
+                    const admissionType = document.querySelector('input[name="admissionType"]:checked').value;
+                    
+                    const courseText = courseType === 'all' ? 'All Courses' : (courseType === 'aided' ? 'Aided' : 'Unaided');
+                    const yearText = year === 'all' ? 'All Years' : year + ' Year';
+                    const typeText = admissionType === 'all' ? 'All Types' : 
+                                    (admissionType === 'regular' ? 'Regular' : 
+                                    (admissionType === 'snq' ? 'SNQ' : 'Lateral Entry'));
+                    
+                    doc.text(`Selected Filters: ${courseText}, ${yearText}, ${typeText}`, 105, 36, { align: 'center' });
+                    
+                    // Create the table
+                    // Get all tables in the document
+                    const tables = document.querySelectorAll('.table-container table');
+                    let startY = 42;
+                    
+                    // Loop through each table and add to PDF
+                    tables.forEach((table, index) => {
+                        if (index > 0) {
+                            // Add a new page for each additional table
+                            doc.addPage();
+                            startY = 42; // Reset Y position for the new page
+                            
+                            // Add the header again on the new page
+                            doc.setFontSize(16);
+                            doc.text('SANJAY MEMORIAL POLYTECHNIC', 105, 15, { align: 'center' });
+                            doc.setFontSize(12);
+                            doc.text('Ikkeri Road, SAGAR - 577401', 105, 22, { align: 'center' });
+                            doc.text('Fee Structure 2025-26', 105, 29, { align: 'center' });
+                            
+                            // Get the header info from the current table
+                            const headerInfo = table.parentElement.querySelector('.receipt-header-info');
+                            if (headerInfo) {
+                                const badgesText = Array.from(headerInfo.querySelectorAll('.info-badge'))
+                                    .map(badge => badge.textContent)
+                                    .join(', ');
+                                doc.text(badgesText, 105, 36, { align: 'center' });
+                            }
+                        }
+                        
+                        // Add the table to the PDF
+                        doc.autoTable({
+                            html: table,
+                            startY: startY,
+                            styles: { fontSize: 10 },
+                            headStyles: { fillColor: [67, 97, 238] },
+                            footStyles: { fillColor: [240, 240, 240], textColor: [67, 97, 238], fontStyle: 'bold' },
+                            margin: { top: startY },
+                            didDrawPage: (data) => {
+                                // Update the startY for the next table
+                                startY = data.cursor.y + 20;
+                            }
+                        });
+                    });
+                    
+                    // Save PDF with dynamic name based on selections
+                    const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+                    doc.save(`SMP_Fee_Structure_${courseType}_${year}_${admissionType}_${timestamp}.pdf`);
+                    
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('btn-ripple');
+                    this.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                    
+                    // Add button animation
+                    this.classList.add('btn-animate');
+                    setTimeout(() => this.classList.remove('btn-animate'), 400);
+                }
+                catch (error) {
+                    console.error("PDF generation error:", error);
+                    alert("Failed to generate PDF. Please try again later.");
+                }
+            });
+            
+            // Initialize the display
+            displayAllFees();
+        });
+    </script>
+</body>
+</html>
