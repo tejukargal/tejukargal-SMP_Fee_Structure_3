@@ -1323,6 +1323,11 @@
             coursesToShow.forEach(course => {
                 yearsToShow.forEach(yr => {
                     typesToShow.forEach(type => {
+                        // Skip invalid combinations: Lateral Entry is not available for 1st Year
+                        if (yr === '1st' && type === 'lateral') {
+                            return; // Skip this iteration
+                        }
+                        
                         receiptCount++;
                         const receiptId = `receipt-${receiptCount}`;
                         
@@ -1345,6 +1350,30 @@
             }
         }
         
+        // Add a disabled class to the lateral option when 1st year is selected
+        function updateFilterOptions() {
+            // Get the selected year
+            const selectedYear = document.querySelector('input[name="year"]:checked').value;
+            
+            // Get the lateral entry option
+            const lateralOption = document.getElementById('typeLateral');
+            const lateralLabel = document.querySelector('label[for="typeLateral"]');
+            
+            // Disable lateral entry for 1st year or enable it for other years
+            if (selectedYear === '1st') {
+                lateralOption.disabled = true;
+                lateralLabel.classList.add('disabled-option');
+                
+                // If lateral is selected while switching to 1st year, switch to regular
+                if (document.getElementById('typeLateral').checked) {
+                    document.getElementById('typeRegular').checked = true;
+                }
+            } else {
+                lateralOption.disabled = false;
+                lateralLabel.classList.remove('disabled-option');
+            }
+        }
+        
         // Event Listeners
         document.addEventListener('DOMContentLoaded', function() {
             // Theme toggle functionality
@@ -1360,8 +1389,16 @@
             // Filter change event listeners
             const filterInputs = document.querySelectorAll('input[type="radio"]');
             filterInputs.forEach(input => {
-                input.addEventListener('change', displayAllFees);
+                input.addEventListener('change', function() {
+                    // Update filter options based on selection
+                    updateFilterOptions();
+                    // Display fees
+                    displayAllFees();
+                });
             });
+            
+            // Initialize filter options
+            updateFilterOptions();
             
             // PDF Download functionality
             document.getElementById('downloadPdf').addEventListener('click', function() {
